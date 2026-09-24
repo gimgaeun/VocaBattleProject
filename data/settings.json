@@ -1,0 +1,7 @@
+{
+    "initialTime": 10,
+    "decreaseStartCount": 10,
+    "decreaseAmount": 0.5,
+    "minimumTime": 3,
+    "currencyMultiplier": 10
+}

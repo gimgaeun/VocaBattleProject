@@ -1,0 +1,364 @@
+{
+    "word_data": [
+        {
+            "id": 1,
+            "word": "apple",
+            "meaning": "사과",
+            "difficulty": "초급"
+        },
+        {
+            "id": 2,
+            "word": "water",
+            "meaning": "물",
+            "difficulty": "초급"
+        },
+        {
+            "id": 3,
+            "word": "house",
+            "meaning": "집",
+            "difficulty": "초급"
+        },
+        {
+            "id": 4,
+            "word": "time",
+            "meaning": "시간",
+            "difficulty": "초급"
+        },
+        {
+            "id": 5,
+            "word": "friend",
+            "meaning": "친구",
+            "difficulty": "초급"
+        },
+        {
+            "id": 6,
+            "word": "school",
+            "meaning": "학교",
+            "difficulty": "초급"
+        },
+        {
+            "id": 7,
+            "word": "study",
+            "meaning": "공부하다",
+            "difficulty": "초급"
+        },
+        {
+            "id": 8,
+            "word": "family",
+            "meaning": "가족",
+            "difficulty": "초급"
+        },
+        {
+            "id": 9,
+            "word": "money",
+            "meaning": "돈",
+            "difficulty": "초급"
+        },
+        {
+            "id": 10,
+            "word": "happy",
+            "meaning": "행복한",
+            "difficulty": "초급"
+        },
+        {
+            "id": 11,
+            "word": "sleep",
+            "meaning": "자다",
+            "difficulty": "초급"
+        },
+        {
+            "id": 12,
+            "word": "eat",
+            "meaning": "먹다",
+            "difficulty": "초급"
+        },
+        {
+            "id": 13,
+            "word": "car",
+            "meaning": "자동차",
+            "difficulty": "초급"
+        },
+        {
+            "id": 14,
+            "word": "road",
+            "meaning": "도로",
+            "difficulty": "초급"
+        },
+        {
+            "id": 15,
+            "word": "door",
+            "meaning": "문",
+            "difficulty": "초급"
+        },
+        {
+            "id": 16,
+            "word": "window",
+            "meaning": "창문",
+            "difficulty": "초급"
+        },
+        {
+            "id": 17,
+            "word": "paper",
+            "meaning": "종이",
+            "difficulty": "초급"
+        },
+        {
+            "id": 18,
+            "word": "pencil",
+            "meaning": "연필",
+            "difficulty": "초급"
+        },
+        {
+            "id": 19,
+            "word": "start",
+            "meaning": "시작하다",
+            "difficulty": "초급"
+        },
+        {
+            "id": 20,
+            "word": "finish",
+            "meaning": "끝나다",
+            "difficulty": "초급"
+        },
+        {
+            "id": 21,
+            "word": "meeting",
+            "meaning": "회의",
+            "difficulty": "중급"
+        },
+        {
+            "id": 22,
+            "word": "schedule",
+            "meaning": "일정",
+            "difficulty": "중급"
+        },
+        {
+            "id": 23,
+            "word": "project",
+            "meaning": "프로젝트",
+            "difficulty": "중급"
+        },
+        {
+            "id": 24,
+            "word": "client",
+            "meaning": "고객",
+            "difficulty": "중급"
+        },
+        {
+            "id": 25,
+            "word": "budget",
+            "meaning": "예산",
+            "difficulty": "중급"
+        },
+        {
+            "id": 26,
+            "word": "employee",
+            "meaning": "직원",
+            "difficulty": "중급"
+        },
+        {
+            "id": 27,
+            "word": "manager",
+            "meaning": "매니저",
+            "difficulty": "중급"
+        },
+        {
+            "id": 28,
+            "word": "factory",
+            "meaning": "공장",
+            "difficulty": "중급"
+        },
+        {
+            "id": 29,
+            "word": "product",
+            "meaning": "제품",
+            "difficulty": "중급"
+        },
+        {
+            "id": 30,
+            "word": "service",
+            "meaning": "서비스",
+            "difficulty": "중급"
+        },
+        {
+            "id": 31,
+            "word": "contract",
+            "meaning": "계약",
+            "difficulty": "중급"
+        },
+        {
+            "id": 32,
+            "word": "payment",
+            "meaning": "지불",
+            "difficulty": "중급"
+        },
+        {
+            "id": 33,
+            "word": "delay",
+            "meaning": "지연",
+            "difficulty": "중급"
+        },
+        {
+            "id": 34,
+            "word": "increase",
+            "meaning": "증가하다",
+            "difficulty": "중급"
+        },
+        {
+            "id": 35,
+            "word": "decrease",
+            "meaning": "감소하다",
+            "difficulty": "중급"
+        },
+        {
+            "id": 36,
+            "word": "suggest",
+            "meaning": "제안하다",
+            "difficulty": "중급"
+        },
+        {
+            "id": 37,
+            "word": "accept",
+            "meaning": "수락하다",
+            "difficulty": "중급"
+        },
+        {
+            "id": 38,
+            "word": "refuse",
+            "meaning": "거절하다",
+            "difficulty": "중급"
+        },
+        {
+            "id": 39,
+            "word": "prepare",
+            "meaning": "준비하다",
+            "difficulty": "중급"
+        },
+        {
+            "id": 40,
+            "word": "report",
+            "meaning": "보고서",
+            "difficulty": "중급"
+        },
+        {
+            "id": 41,
+            "word": "implement",
+            "meaning": "실행하다",
+            "difficulty": "고급"
+        },
+        {
+            "id": 42,
+            "word": "evaluate",
+            "meaning": "평가하다",
+            "difficulty": "고급"
+        },
+        {
+            "id": 43,
+            "word": "allocate",
+            "meaning": "할당하다",
+            "difficulty": "고급"
+        },
+        {
+            "id": 44,
+            "word": "facilitate",
+            "meaning": "촉진하다",
+            "difficulty": "고급"
+        },
+        {
+            "id": 45,
+            "word": "mandatory",
+            "meaning": "의무적인",
+            "difficulty": "고급"
+        },
+        {
+            "id": 46,
+            "word": "prerequisite",
+            "meaning": "전제 조건",
+            "difficulty": "고급"
+        },
+        {
+            "id": 47,
+            "word": "lucrative",
+            "meaning": "수익성이 좋은",
+            "difficulty": "고급"
+        },
+        {
+            "id": 48,
+            "word": "discrepancy",
+            "meaning": "불일치",
+            "difficulty": "고급"
+        },
+        {
+            "id": 49,
+            "word": "fluctuate",
+            "meaning": "변동하다",
+            "difficulty": "고급"
+        },
+        {
+            "id": 50,
+            "word": "unanimous",
+            "meaning": "만장일치의",
+            "difficulty": "고급"
+        },
+        {
+            "id": 51,
+            "word": "reimburse",
+            "meaning": "환급하다",
+            "difficulty": "고급"
+        },
+        {
+            "id": 52,
+            "word": "tentative",
+            "meaning": "잠정적인",
+            "difficulty": "고급"
+        },
+        {
+            "id": 53,
+            "word": "obsolete",
+            "meaning": "구식의",
+            "difficulty": "고급"
+        },
+        {
+            "id": 54,
+            "word": "alleviate",
+            "meaning": "완화하다",
+            "difficulty": "고급"
+        },
+        {
+            "id": 55,
+            "word": "compromise",
+            "meaning": "타협하다",
+            "difficulty": "고급"
+        },
+        {
+            "id": 56,
+            "word": "consensus",
+            "meaning": "합의",
+            "difficulty": "고급"
+        },
+        {
+            "id": 57,
+            "word": "ambiguous",
+            "meaning": "모호한",
+            "difficulty": "고급"
+        },
+        {
+            "id": 58,
+            "word": "consecutive",
+            "meaning": "연속적인",
+            "difficulty": "고급"
+        },
+        {
+            "id": 59,
+            "word": "scrutiny",
+            "meaning": "면밀한 조사",
+            "difficulty": "고급"
+        },
+        {
+            "id": 60,
+            "word": "precedent",
+            "meaning": "선례",
+            "difficulty": "고급"
+        }
+    ]
+}
