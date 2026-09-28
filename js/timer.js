@@ -3,39 +3,22 @@ import {
 } from "./data.js";
 
 import {
-    updateScore,
     setTimerWarning,
     setAnswerPosition,
-    updateTimer
+    updateTimer,
+    getFallingArea
 } from "./ui.js";
 
-//타이머 아이디
 let timerId = null;
-
-//버튼 낙하 애니메이션 아이디
 let animationId = null;
-
-//현재 남은 시간
 let remainingTime = 0;
-
-//답변 버튼 현재 위치
-let fallingPosition = 0;
-
-//이전 애니메이션 시간
-let lastTimestamp = null;
+let startTime = null;
 
 //타이머 시작
 export function startTimer(onTimeOver, timeLimit = null) {
-    //기존 타이머 정지
     stopTimer();
-    //게임 설정 가져오기
     const settings = getGameSettings();
-    //문제 제한 시간 설정
-    remainingTime =
-        timeLimit ?? settings.initialTime ?? 10;
-    //초기화
-    fallingPosition = 0;
-    lastTimestamp = null;
+    remainingTime = timeLimit ?? settings.initialTime ?? 10;
     updateTimer(remainingTime);
     setTimerWarning(false);
     //카운트다운 시작
@@ -45,9 +28,8 @@ export function startTimer(onTimeOver, timeLimit = null) {
             remainingTime = 0;
         }
         updateTimer(remainingTime);
-        //3초이하인지 확인
         setTimerWarning(remainingTime <= 3);
-        //시간이 끝났는지 확인
+
         if (remainingTime <= 0) {
             stopTimer();
             if (onTimeOver) {
@@ -70,37 +52,25 @@ export function stopTimer() {
 //버튼 낙하
 export function startFalling(timeLimit) {
     stopFalling();
-    //초기화
-    fallingPosition = 0;
-    lastTimestamp = null;
-    const fallingArea = document.getElementById("falling-area");
-    const areaHeight = fallingArea.clientHeight;
+    const fallingArea = getFallingArea();
+    const areaHeight = fallingArea ? fallingArea.clientHeight : 500;
     const buttonHeight = 82;
-    // 버튼이 바닥에 도착할 수 있는 최대 위치
-    const maxPosition =
-        areaHeight - buttonHeight;
-    //애니메이션
-    function animate(timestamp) {
-        if (lastTimestamp === null) {
-            lastTimestamp = timestamp;
+    const maxPosition = areaHeight - buttonHeight;
+    startTime = Date.now();
+    function animate() {
+        const passedTime = Date.now() - startTime;
+        let progress = passedTime / (timeLimit * 1000);
+        if (progress > 1) {
+            progress = 1;
         }
-        const elapsed =
-            timestamp - lastTimestamp;
         //제한시간에 맞춰 진행률 계산
-        fallingPosition +=
-            (elapsed / (timeLimit * 1000))
-            * maxPosition;
-        //바닥을 넘어가지 않도록 제한
-        if (fallingPosition > maxPosition) {
-            fallingPosition = maxPosition;
-        }
+        const fallingPosition = progress * maxPosition;
         setAnswerPosition(fallingPosition);
-        lastTimestamp = timestamp;
-        animationId =
-            requestAnimationFrame(animate);
+        if (progress < 1 && remainingTime > 0) {
+            animationId = requestAnimationFrame(animate);
+        }
     }
-    animationId =
-        requestAnimationFrame(animate);
+    animationId = requestAnimationFrame(animate);
 }
 
 //낙하 정지
@@ -109,10 +79,9 @@ export function stopFalling() {
         cancelAnimationFrame(animationId);
         animationId = null;
     }
-    lastTimestamp = null;
 }
 
 //남은 시간 가져오기
-export function getRemaingTime() {
+export function getRemainingTime() {
     return remainingTime;
 }

@@ -8,37 +8,20 @@ let userData = {
 //사용자 데이터 불러오기
 export async function loadUserData() {
     try {
-        const response = await fetch(
-            "/data/userdata.json"
-        );
-        //데이터를 불러오지 못한 경우
+        const response = await fetch("/data/userdata.json");
         if (!response.ok) {
-            throw new Error(
-                "userdata.json을 불러오지 못함"
-            );
+            throw new Error("userdata.json을 불러오지 못함");
         }
-        //데이터 불러온 경우
         const data = await response.json();
         userData = {
             currency: Number(data.currency) || 0,
-            bestScore:
-                Number(data.bestScore) || 0,
-            rankingList:
-                Array.isArray(data.rankingList)
-                    ? data.rankingList
-                    : []
+            bestScore: Number(data.bestScore) || 0,
+            rankingList: Array.isArray(data.rankingList) ? data.rankingList : []
         };
-        console.log(
-            "사용자 데이터 로드 완료 :",
-            userData
-        );
+        console.log("사용자 데이터 로드 완료 :", userData);
         return userData;
-        //오류가 발생한 경우
     } catch (error) {
-        console.error(
-            "사용자 데이터 로드 오류",
-            error
-        );
+        console.error("사용자 데이터 로드 오류", error);
         return userData;
     }
 }
@@ -53,30 +36,24 @@ export function addCurrency(amount) {
     userData.currency += amount;
 }
 
-// 최고 점수 업데이트
+//최고 점수 업데이트
 export function updateBestScore(score) {
     if (score > userData.bestScore) {
         userData.bestScore = score;
     }
 }
 
-// 랭킹 추가
+//랭킹 추가
 export function addRanking(score, difficulty) {
     userData.rankingList.push({
         score: score,
         difficulty: difficulty
     });
     //점수 높은 순으로 정렬
-    userData.rankingList.sort(
-        (a, b) => b.score - a.score
-    );
+    userData.rankingList.sort((a, b) => b.score - a.score);
     //상위 10개만 유지
-    userData.rankingList =
-        userData.rankingList.slice(0, 10);
-    console.log(
-        "랭킹 업데이트 :",
-        userData.rankingList
-    );
+    userData.rankingList = userData.rankingList.slice(0, 10);
+    console.log("랭킹 업데이트 :", userData.rankingList);
 }
 
 // 랭킹 가져오기
@@ -88,43 +65,21 @@ export function getRankingList() {
 export async function saveUserData() {
     console.log("저장 시작");
     try {
-        const response = await fetch(
-            "/save-user-data",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type":
-                        "application/json"
-                },
-                body:
-                    JSON.stringify(userData)
-            }
-        );
-        console.log(
-            "fetch 완료"
-        );
-        console.log(
-            "status:",
-            response.status
-        );
-        //저장 실패한 경우
+        const response = await fetch("/save-user-data", {
+            method: "POST",
+            headers: {
+                "Content-Type":
+                    "application/json"
+            },
+            body: JSON.stringify(userData)
+        });
         if (!response.ok) {
-            throw new Error(
-                "사용자 데이터 저장 실패"
-            );
+            throw new Error("사용자 데이터 저장 실패");
         }
-        //저장 성공한 경우
-        const result =
-            await response.json();
-        console.log(
-            "저장 결과:",
-            result
-        );
-        //오류가 발생한 경우
+        const result = await response.json();
+        console.log("저장 결과:", result);
     } catch (error) {
-        console.error(
-            "저장 오류:",
-            error
-        );
+        console.error("저장 오류:", error);
+        alert("기록 저장 실패했습니다.");
     }
 }
