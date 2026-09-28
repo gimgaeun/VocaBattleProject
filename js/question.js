@@ -15,9 +15,9 @@ function shuffle(array) {
 }
 
 //문제 제작
-export function generate_question(
+export function generateQuestion(
     words,
-    correct_word
+    correctWord
 ) {
     //단어가 4개 이하인 경우
     if (!words || words.length < 4) {
@@ -26,27 +26,27 @@ export function generate_question(
         );
     }
     //정답을 제외하고 오답 후보
-    const wrong_words =
+    const wrongWords =
         words.filter(
             word =>
-                word.id !== correct_word.id
+                word.id !== correctWord.id
         );
     //오답 선택
-    const selected_wrong_words =
-        shuffle(wrong_words).slice(0, 3);
+    const selectedWrongWords =
+        shuffle(wrongWords).slice(0, 3);
 
     //정답 + 오답을 섞음
     const choices =
         shuffle([
-            correct_word,
-            ...selected_wrong_words
+            correctWord,
+            ...selectedWrongWords
         ]);
     //문제 반환
     return {
-        question: correct_word.meaning,
+        question: correctWord.meaning,
         //실제 정답
-        correct_answer:
-            correct_word.word,
+        correctAnswer:
+            correctWord.word,
         //선택지
         choices: choices
     };

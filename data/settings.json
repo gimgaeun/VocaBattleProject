@@ -1,7 +1,7 @@
 {
-    "initial_time": 10,
-    "decrease_start_count": 10,
-    "decrease_amount": 0.5,
-    "minimum_time": 3,
-    "currency_multiplier": 1
+    "initialTime": 10,
+    "decreaseStartCount": 10,
+    "decreaseAmount": 0.5,
+    "minimumTime": 3,
+    "currencyMultiplier": 1
 }

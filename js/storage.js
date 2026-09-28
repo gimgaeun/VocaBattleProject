@@ -1,12 +1,12 @@
-let user_data = {
+let userData = {
     currency: 0,
-    best_score: 0,
-    ranking_list: []
+    bestScore: 0,
+    rankingList: []
 };
 
 
 //사용자 데이터 불러오기
-export async function load_user_data() {
+export async function loadUserData() {
     try {
         const response = await fetch(
             "/data/userdata.json"
@@ -19,74 +19,73 @@ export async function load_user_data() {
         }
         //데이터 불러온 경우
         const data = await response.json();
-        user_data = {
+        userData = {
             currency: Number(data.currency) || 0,
-            best_score:
-                Number(data.best_score) || 0,
-            ranking_list:
-                Array.isArray(data.ranking_list)
-                    ? data.ranking_list
+            bestScore:
+                Number(data.bestScore) || 0,
+            rankingList:
+                Array.isArray(data.rankingList)
+                    ? data.rankingList
                     : []
         };
         console.log(
             "사용자 데이터 로드 완료 :",
-            user_data
+            userData
         );
-        return user_data;
+        return userData;
         //오류가 발생한 경우
     } catch (error) {
         console.error(
             "사용자 데이터 로드 오류",
             error
         );
-        return user_data;
+        return userData;
     }
 }
 
-
 //사용자 데이터 가져오기
-export function get_user_data() {
-    return user_data;
+export function getUserData() {
+    return userData;
 }
 
 //재화 추가
-export function add_currency(amount) {
-    user_data.currency += amount;
+export function addCurrency(amount) {
+    userData.currency += amount;
 }
 
 // 최고 점수 업데이트
-export function update_best_score(score) {
-    if (score > user_data.best_score) {
-        user_data.best_score = score;
+export function updateBestScore(score) {
+    if (score > userData.bestScore) {
+        userData.bestScore = score;
     }
 }
 
 // 랭킹 추가
-export function add_ranking(score, difficulty) {
-    user_data.ranking_list.push({
+export function addRanking(score, difficulty) {
+    userData.rankingList.push({
         score: score,
         difficulty: difficulty
     });
     //점수 높은 순으로 정렬
-    user_data.ranking_list.sort(
+    userData.rankingList.sort(
         (a, b) => b.score - a.score
     );
     //상위 10개만 유지
-    user_data.ranking_list =
-        user_data.ranking_list.slice(0, 10);
+    userData.rankingList =
+        userData.rankingList.slice(0, 10);
     console.log(
         "랭킹 업데이트 :",
-        user_data.ranking_list
+        userData.rankingList
     );
 }
 
 // 랭킹 가져오기
-export function get_ranking_list() {
-    return user_data.ranking_list;
+export function getRankingList() {
+    return userData.rankingList;
 }
 
 // 사용자 데이터 저장
-export async function save_user_data() {
+export async function saveUserData() {
     console.log("저장 시작");
     try {
         const response = await fetch(
@@ -98,7 +97,7 @@ export async function save_user_data() {
                         "application/json"
                 },
                 body:
-                    JSON.stringify(user_data)
+                    JSON.stringify(userData)
             }
         );
         console.log(

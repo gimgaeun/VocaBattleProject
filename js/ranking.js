@@ -1,43 +1,43 @@
 import {
-    get_ranking_list
+    getRankingList
 } from "./storage.js";
 
 import {
-    show_ranking_screen
+    showRankingScreen
 } from "./ui.js";
 
 //랭킹 표시
-export function show_ranking() {
+export function showRanking() {
     //랭킹 데이터 가져오기
-    const ranking_list =
-        get_ranking_list();
-    const ranking_element =
+    const rankingList =
+        getRankingList();
+    const rankingElement =
         document.getElementById(
             "ranking-list"
         );
     //기존 랭킹 화면 내용 삭제
-    ranking_element.innerHTML = "";
+    rankingElement.innerHTML = "";
     // 랭킹이 없는 경우
-    if (ranking_list.length === 0) {
+    if (rankingList.length === 0) {
         const li =
             document.createElement("li");
         li.textContent =
             "아직 랭킹 기록이 없습니다.";
-        ranking_element.appendChild(li);
-        show_ranking_screen();
+        rankingElement.appendChild(li);
+        showRankingScreen();
         return;
     }
 
 
     // 랭킹 출력
-    ranking_list.forEach(
+    rankingList.forEach(
         (item, index) => {
             const li =
                 document.createElement("li");
             li.textContent =
                 `${index + 1}위  ${item.score}점 (${item.difficulty})`;
-            ranking_element.appendChild(li);
+            rankingElement.appendChild(li);
         }
     );
-    show_ranking_screen();
+    showRankingScreen();
 }

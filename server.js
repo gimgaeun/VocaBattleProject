@@ -29,18 +29,18 @@ const server = http.createServer((req, res) => {
 
         req.on("end", () => {
             try {
-                const user_data = JSON.parse(body);
+                const userData = JSON.parse(body);
 
-                const file_path = path.join(
+                const filePath = path.join(
                     ROOT_DIR,
                     "data",
                     "userdata.json"
                 );
 
                 fs.writeFileSync(
-                    file_path,
+                    filePath,
                     JSON.stringify(
-                        user_data,
+                        userData,
                         null,
                         4
                     ),
@@ -83,21 +83,21 @@ const server = http.createServer((req, res) => {
     // 정적 파일 제공
     // =========================
 
-    let file_path = req.url === "/"
+    let filePath = req.url === "/"
         ? path.join(ROOT_DIR, "index.html")
         : path.join(ROOT_DIR, decodeURIComponent(req.url));
 
     // 쿼리 문자열 제거
-    file_path = file_path.split("?")[0];
+    filePath = filePath.split("?")[0];
 
     // 경로 보안
-    if (!file_path.startsWith(ROOT_DIR)) {
+    if (!filePath.startsWith(ROOT_DIR)) {
         res.writeHead(403);
         res.end("Forbidden");
         return;
     }
 
-    fs.readFile(file_path, (error, data) => {
+    fs.readFile(filePath, (error, data) => {
 
         if (error) {
             res.writeHead(404, {
@@ -110,14 +110,14 @@ const server = http.createServer((req, res) => {
         }
 
         const extension =
-            path.extname(file_path).toLowerCase();
+            path.extname(filePath).toLowerCase();
 
-        const content_type =
+        const contentType =
             MIME_TYPES[extension] ||
             "application/octet-stream";
 
         res.writeHead(200, {
-            "Content-Type": content_type
+            "Content-Type": contentType
         });
 
         res.end(data);

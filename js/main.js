@@ -1,75 +1,75 @@
 import {
-    load_word_data,
-    load_game_setting
+    loadWordData,
+    loadGameSetting
 } from "./data.js";
 
 import {
-    load_user_data,
-    get_user_data
+    loadUserData,
+    getUserData
 } from "./storage.js";
 
 import {
-    start_game
+    startGame
 } from "./game.js";
 
 import {
-    show_start_screen,
-    update_currency
+    showStartScreen,
+    updateCurrency
 } from "./ui.js";
 
 import {
-    show_ranking
+    showRanking
 } from "./ranking.js";
 
 //선택된 난이도
-let selected_difficulty = null;
+let selectedDifficulty = null;
 
 //버튼 목록
-const difficulty_button =
+const difficultyButton =
     document.querySelectorAll(
         ".difficulty-btn"
     );
 
 //게임 시작 버튼
-const start_button =
+const startButton =
     document.getElementById(
         "start-btn"
     );
 
 //랭킹 보기 버튼
-const ranking_button =
+const rankingButton =
     document.getElementById(
         "ranking-btn"
     );
 
 //다시 하기 버튼
-const restart_button =
+const restartButton =
     document.getElementById(
         "restart-btn"
     );
 
 //결과->메인으로 버튼
-const home_button =
+const homeButton =
     document.getElementById(
         "home-btn"
     );
 
 //랭킹->메인으로 버튼
-const ranking_home_button =
+const rankingHomeButton =
     document.getElementById(
         "ranking-home-btn"
     );
 
 //난이도 선택
-difficulty_button.forEach(button => {
+difficultyButton.forEach(button => {
     button.addEventListener(
         "click",
         () => {
             //선택한 난이도 저장
-            selected_difficulty =
+            selectedDifficulty =
                 button.dataset.difficulty;
             //기존 선택지 삭제
-            difficulty_button.forEach(
+            difficultyButton.forEach(
                 btn => {
                     btn.classList.remove(
                         "selected"
@@ -82,72 +82,72 @@ difficulty_button.forEach(button => {
             );
             console.log(
                 "선택된 난이도 :",
-                selected_difficulty
+                selectedDifficulty
             );
         }
     );
 });
 
 //게임 시작
-start_button.addEventListener(
+startButton.addEventListener(
     "click",
     () => {
         //난이도 선택 확인
-        if (!selected_difficulty) {
+        if (!selectedDifficulty) {
             alert(
                 "난이도를 선택해주세요."
             );
             return;
         }
         //게임 시작 요청
-        start_game(
-            selected_difficulty
+        startGame(
+            selectedDifficulty
         );
     }
 );
 
 //랭킹 화면
-ranking_button.addEventListener(
+rankingButton.addEventListener(
     "click",
     () => {
-        show_ranking();
+        showRanking();
     });
 
 //다시 하기
-restart_button.addEventListener(
+restartButton.addEventListener(
     "click",
     () => {
         //선택된 난이도가 없는 경우
-        if (!selected_difficulty) {
-            show_start_screen();
+        if (!selectedDifficulty) {
+            showStartScreen();
             return;
         }
         //새게임 시작
-        start_game(
-            selected_difficulty
+        startGame(
+            selectedDifficulty
         );
     }
 );
 
 //결과 화면 -> 메인
-home_button.addEventListener(
+homeButton.addEventListener(
     "click",
     () => {
         //현재 사용자 데이터 가져오기
-        const user_data =
-            get_user_data();
-        update_currency(
-            user_data.currency
+        const userData =
+            getUserData();
+        updateCurrency(
+            userData.currency
         );
-        show_start_screen();
+        showStartScreen();
     }
 );
 
 //랭킹 -> 메인
-ranking_home_button.addEventListener(
+rankingHomeButton.addEventListener(
     "click",
     () => {
-        show_start_screen();
+        showStartScreen();
     }
 );
 
@@ -157,19 +157,19 @@ async function initialization() {
         "게임 시작"
     );
     //단어 데이터 불러오기
-    await load_word_data();
+    await loadWordData();
     //게임 설정 불러오기
-    await load_game_setting();
+    await loadGameSetting();
     //사용자 데이터 가져오기
-    const user_data = await load_user_data();
+    const userData = await loadUserData();
     //현재 재화 표시
-    update_currency(
-        user_data.currency
+    updateCurrency(
+        userData.currency
     );
     console.log(
         "게임 초기화 완료"
     );
-    show_start_screen();
+    showStartScreen();
 }
 
 //프로그램 실행
