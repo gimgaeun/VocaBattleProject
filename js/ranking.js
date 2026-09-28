@@ -22,9 +22,9 @@ export function showRanking() {
         li.textContent = "아직 랭킹 기록이 없습니다.";
         rankingElement.appendChild(li);
     } else {
-        rankingList.forEach((item, index) => {
+        rankingList.forEach((item) => {
             const li = document.createElement("li");
-            li.textContent = `${index + 1}위  ${item.score}점 (${item.difficulty})`;
+            li.textContent = `${item.score}점 (${item.difficulty})`;
             rankingElement.appendChild(li);
         });
     }
