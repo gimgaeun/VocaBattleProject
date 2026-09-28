@@ -1,9 +1,13 @@
 {
-    "currency": 48,
+    "currency": 57,
     "bestScore": 11,
     "rankingList": [
         {
             "score": 11,
+            "difficulty": "초급"
+        },
+        {
+            "score": 9,
             "difficulty": "초급"
         },
         {
@@ -37,10 +41,6 @@
         {
             "score": 1,
             "difficulty": "초급"
-        },
-        {
-            "score": 0,
-            "difficulty": "중급"
         }
     ]
 }
