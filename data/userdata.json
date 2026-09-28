@@ -1,46 +1,5 @@
 {
-    "currency": 83,
-    "bestScore": 30,
-    "rankingList": [
-        {
-            "score": 30,
-            "difficulty": "초급"
-        },
-        {
-            "score": 20,
-            "difficulty": "초급"
-        },
-        {
-            "score": 20,
-            "difficulty": "초급"
-        },
-        {
-            "score": 20,
-            "difficulty": "초급"
-        },
-        {
-            "score": 12,
-            "difficulty": "중급"
-        },
-        {
-            "score": 8,
-            "difficulty": "초급"
-        },
-        {
-            "score": 7,
-            "difficulty": "초급"
-        },
-        {
-            "score": 6,
-            "difficulty": "초급"
-        },
-        {
-            "score": 6,
-            "difficulty": "중급"
-        },
-        {
-            "score": 3,
-            "difficulty": "중급"
-        }
-    ]
+    "currency": 0,
+    "bestScore": 0,
+    "rankingList": []
 }

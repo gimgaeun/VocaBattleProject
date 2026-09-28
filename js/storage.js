@@ -4,6 +4,7 @@ let userData = {
     rankingList: []
 };
 
+const STORAGE_KEY = "vocaBattleUserData";
 
 //사용자 데이터 불러오기
 export async function loadUserData() {
@@ -80,6 +81,6 @@ export async function saveUserData() {
         console.log("저장 결과:", result);
     } catch (error) {
         console.error("저장 오류:", error);
-        alert("기록 저장 실패했습니다.");
+        alert("기록 저장 실패했습니다.")
     }
 }
