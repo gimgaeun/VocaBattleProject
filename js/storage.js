@@ -9,7 +9,7 @@ const STORAGE_KEY = "vocaBattleUserData";
 //사용자 데이터 불러오기
 export async function loadUserData() {
     try {
-        const response = await fetch("/data/userdata.json");
+        const response = await fetch("/get-user-data");
         if (!response.ok) {
             throw new Error("userdata.json을 불러오지 못함");
         }
