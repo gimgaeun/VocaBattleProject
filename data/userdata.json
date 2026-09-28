@@ -1,5 +1,10 @@
 {
-    "currency": 0,
-    "bestScore": 0,
-    "rankingList": []
+    "currency": 1,
+    "bestScore": 1,
+    "rankingList": [
+        {
+            "score": 1,
+            "difficulty": "초급"
+        }
+    ]
 }
