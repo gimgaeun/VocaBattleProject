@@ -1,5 +1,5 @@
 {
-    "word_data": [
+    "wordData": [
         {"id": 1, "word": "resume", "meaning": "이력서", "difficulty": "초급"},
         {"id": 2, "word": "applicant", "meaning": "지원자", "difficulty": "초급"},
         {"id": 3, "word": "contract", "meaning": "계약서", "difficulty": "초급"},
