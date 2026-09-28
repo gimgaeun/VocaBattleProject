@@ -47,7 +47,7 @@ async function saveGithubUserData(userData, sha) {
     const url =
         `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`;
 
-    const content = Buffer.from(JSON.stringify(user_data, null, 4)).toString("base64");
+    const content = Buffer.from(JSON.stringify(userData, null, 4)).toString("base64");
     const response = await fetch(url, {
         method: "PUT",
         headers: {
@@ -64,8 +64,8 @@ async function saveGithubUserData(userData, sha) {
         })
     });
     if (!response.ok) {
-        const error_text = await response.text();
-        throw new Error(`GitHub 데이터 저장 실패: ${response.status} ${error_text}`);
+        const errorText = await response.text();
+        throw new Error(`GitHub 데이터 저장 실패: ${response.status} ${errorText}`);
     }
     return await response.json();
 }
@@ -83,7 +83,7 @@ async function handleGetUserData(req, res) {
     }
 }
 
-async function handleApiRequest(req, res) {
+async function handleSaveUserData(req, res) {
     let body = "";
     req.on("data", chunk => {
         body += chunk;
@@ -91,15 +91,11 @@ async function handleApiRequest(req, res) {
 
     req.on("end", async () => {
         try {
-            const user_data = JSON.parse(body);
+            const userData = JSON.parse(body);
             // 현재 GitHub 파일 가져오기
-            const github_data =
-                await get_github_user_data();
+            const githubData = await getGithubUserData();
             // GitHub 파일 수정
-            await save_github_user_data(
-                user_data,
-                github_data.sha
-            );
+            await saveGithubUserData(userData, githubData.sha);
             console.log("GitHub userdata.json 저장 완료");
 
             res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
@@ -122,7 +118,7 @@ function serveStaticFile(req, res) {
 
     // 경로 보안 강화 (Directory Traversal 방어)
     const resolvedPath = path.resolve(filePath);
-    if (!resolvedPath.startsWith(ROOT_DIR)) {
+    if (resolvedPath !== ROOT_DIR && !resolvedPath.startsWith(ROOT_DIR + path.sep)) {
         res.writeHead(403, { "Content-Type": "text/plain; charset=utf-8" });
         res.end("Forbidden");
         return;
@@ -145,7 +141,7 @@ function serveStaticFile(req, res) {
 
 const server = http.createServer((req, res) => {
     if (req.method === "POST" && req.url === "/save-user-data") {
-        handleApiRequest(req, res);
+        handleSaveUserData(req, res);
     } else if (req.method === "GET" && req.url === "/get-user-data") {
         handleGetUserData(req, res);
     } else {
