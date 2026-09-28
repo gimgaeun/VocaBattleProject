@@ -1,5 +1,5 @@
 {
-    "currency": 93,
+    "currency": 98,
     "bestScore": 14,
     "rankingList": [
         {
@@ -35,11 +35,11 @@
             "difficulty": "초급"
         },
         {
-            "score": 4,
+            "score": 5,
             "difficulty": "초급"
         },
         {
-            "score": 3,
+            "score": 4,
             "difficulty": "초급"
         }
     ]
