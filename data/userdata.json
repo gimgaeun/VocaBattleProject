@@ -1,5 +1,5 @@
 {
-    "currency": 21,
+    "currency": 24,
     "bestScore": 6,
     "rankingList": [
         {
@@ -8,6 +8,10 @@
         },
         {
             "score": 3,
+            "difficulty": "고급"
+        },
+        {
+            "score": 1,
             "difficulty": "고급"
         },
         {
