@@ -51,14 +51,36 @@ export function updateBestScore(score) {
     }
 }
 
+const difficultyWeight = {
+    "고급": 3,
+    "중급": 2,
+    "초급": 1
+};
+
 //랭킹 추가
 export function addRanking(score, difficulty) {
-    userData.rankingList.push({
-        score: score,
-        difficulty: difficulty
+    //동일한 난이도에서 동일한 점수가 이미 존재하는지 확인
+    const isDuplicate = userData.rankingList.some(
+        (entry) => entry.score === score && entry.difficulty === difficulty
+    );
+    //중복된 기록이 없을 때만 리스트 추가
+    if (!isDuplicate) {
+        userData.rankingList.push({
+            score: score,
+            difficulty: difficulty
+        });
+    }
+
+    userData.rankingList.sort((a, b) => {
+        if (b.score !== a.score) {
+            return b.score - a.score;
+        } else {
+            //점수가 같은 경우 난이도가 높은 순으로 정렬 (고급 > 중급 > 초급)
+            const weightA = difficultyWeight[a.difficulty] || 0;
+            const weightB = difficultyWeight[b.difficulty] || 0;
+            return weightB - weightA;
+        }
     });
-    //점수 높은 순으로 정렬
-    userData.rankingList.sort((a, b) => b.score - a.score);
     //상위 10개만 유지
     userData.rankingList = userData.rankingList.slice(0, 10);
     console.log("랭킹 업데이트 :", userData.rankingList);
