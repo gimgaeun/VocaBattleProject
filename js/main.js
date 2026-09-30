@@ -97,7 +97,4 @@ async function initialization() {
 }
 
 //프로그램 실행
-//if (typeof window !== "undefined") {
-// document.addEventListener("DOMContentLoaded", initialization);
-//}
 initialization();

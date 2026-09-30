@@ -14,6 +14,11 @@ export async function loadUserData() {
             throw new Error("userdata.json을 불러오지 못함");
         }
         const data = await response.json();
+        if (Object.keys(data).length == 0 || data.currency == undefined) {
+            alert("저장된 게임 기록이 없어 기본값으로 초기화되었습니다.");
+            await saveUserData();
+            return userData;
+        }
         userData = {
             currency: Number(data.currency) || 0,
             bestScore: Number(data.bestScore) || 0,
@@ -23,6 +28,8 @@ export async function loadUserData() {
         return userData;
     } catch (error) {
         console.error("사용자 데이터 로드 오류", error);
+        alert("저장된 게임 기록이 없어 기본값으로 초기화되었습니다.");
+        await saveUserData();
         return userData;
     }
 }
