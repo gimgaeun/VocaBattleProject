@@ -49,6 +49,7 @@ Chrome, Edge 등의 최신 웹 브라우저에서 실행할 수 있습니다.
 1. Chrome 등의 웹 브라우저를 실행합니다.
 2. 아래 링크에 접속합니다.
 **[Voca Battle 실행하기](https://vocabattleproject.onrender.com/)**
+※ Render 배포 환경의 특성상 웹 페이지를 처음 실행하거나 장시간 사용하지 않은 후 다시 접속하는 경우, 서버가 활성화되는 데 다소 시간이 소요될 수 있습니다.
 
 ---
 
