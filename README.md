@@ -63,15 +63,9 @@ Chrome, Edge 등의 최신 웹 브라우저에서 실행할 수 있습니다.
 #### 실행 방법
 
 1. 먼저 프로젝트 폴더를 Vicual Studio Code 등으로 엽니다. 
-2. 터미널(powershell)에서 프로젝트 폴더로 이동한 후 다음 명령어를 실행합니다.
+2. api.pdf를 다운로드 받은 후 파일 내에 있는 명령어를 실행한다.
 
-```
-$env:GITHUB_TOKEN="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"
-$env:GITHUB_OWNER="gimgaeun"
-$env:GITHUB_REPO="VacaBattleProject"
-$env:GITHUB_BRANCH="main"
-$env:GITHUB_FILE_PATH="data/userdata.json"
-```
+(보안으로 인해 토큰을 직접 올릴 수 없어 pdf로 업로드함)
 
 3. 이후 다음 명령어를 실행합니다.
 ```
