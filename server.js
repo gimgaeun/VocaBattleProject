@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
@@ -30,7 +32,11 @@ async function getGithubUserData() {
     });
 
     if (!response.ok) {
-        throw new Error(`GitHub 데이터 읽기 실패: ${response.status}`);
+        const errorText = await response.text();
+
+        throw new Error(
+            `GitHub 데이터 읽기 실패: ${response.status} ${errorText}`
+        );
     }
 
     const result = await response.json();

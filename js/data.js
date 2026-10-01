@@ -12,10 +12,6 @@ export async function loadWordData() {
         }
         //데이터 정상적으로 불러온 경우
         const data = await response.json();
-        //데이터 구조 검증
-        //if (!data.wordData || !Array.isArray(data.wordData)) {
-        // throw new Error("유효하지 않은 단어 데이터 형식");
-        //}
         wordData = data.wordData;
         console.log("단어 데이터 로드 완료:", wordData);
         return wordData;

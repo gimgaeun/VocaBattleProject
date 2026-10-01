@@ -113,6 +113,7 @@ export function handleAnswer(button) {
     }
     else {
         console.log("오답");
+        disableAnswerButtons();
         showWrongAnswer(button);
         const answerButtons = getAnswerButtons();
         answerButtons.forEach(answerButton => {
@@ -120,7 +121,7 @@ export function handleAnswer(button) {
                 showCorrectAnswer(answerButton);
             }
         });
-        setTimeout(() => { gameOver("오답 선택"); }, 500);
+        setTimeout(() => { gameOver("오답 선택"); }, 300);
     }
 }
 
